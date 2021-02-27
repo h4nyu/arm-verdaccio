@@ -1,12 +1,13 @@
-version: '3.1'
+version: '3.9'
 
 services:
   app:
-    image: "verdaccio/verdaccio:4"
-    container_name: "verdaccio"
+    build: .
     environment:
       - VERDACCIO_PORT
     ports:
       - "$VERDACCIO_PORT:$VERDACCIO_PORT"
+    command: verdaccio --config /verdaccio/conf/config.yaml --listen http://0.0.0.0:$VERDACCIO_PORT
+    restart: on-failure
     volumes:
       - "./verdaccio:/verdaccio"
