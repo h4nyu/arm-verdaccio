@@ -5,6 +5,7 @@ services:
     build: .
     environment:
       - VERDACCIO_PORT
+      - VERDACCIO_PROTOCOL
     ports:
       - "$VERDACCIO_PORT:$VERDACCIO_PORT"
     command: verdaccio --config /verdaccio/conf/config.yaml --listen http://0.0.0.0:$VERDACCIO_PORT
